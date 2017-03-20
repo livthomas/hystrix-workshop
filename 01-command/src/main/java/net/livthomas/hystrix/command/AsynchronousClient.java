@@ -27,8 +27,7 @@ public class AsynchronousClient {
     private static final Logger log = LoggerFactory.getLogger(AsynchronousClient.class);
 
     private static Future<String> callRemoteServiceAsynchronously() throws Exception {
-        // TODO execute Hystrix command asynchronously here
-        return null;
+        return new RemoteServiceCommand().queue();
     }
 
     public static void main(String[] args) {

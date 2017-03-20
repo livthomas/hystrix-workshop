@@ -26,8 +26,7 @@ public class ResilientClient {
     private static final Logger log = LoggerFactory.getLogger(RemoteService.class);
 
     private static String callRemoteService() throws Exception {
-        // TODO use Hystrix command here
-        return RemoteService.call();
+        return new RemoteServiceCommand().execute();
     }
 
     public static void main(String[] args) {
