@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>net.livthomas.hystrix</groupId>
+  <artifactId>hystrix-workshop</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>01-command</module>
+  </modules>
+
+  <packaging>pom</packaging>
+
+  <properties>
+    <failIfNoTests>false</failIfNoTests>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <version.hystrix>1.5.10</version.hystrix>
+    <version.logback>1.2.1</version.logback>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>${version.logback}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.netflix.hystrix</groupId>
+        <artifactId>hystrix-core</artifactId>
+        <version>${version.hystrix}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.netflix.hystrix</groupId>
+        <artifactId>hystrix-dashboard</artifactId>
+        <version>${version.hystrix}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.netflix.hystrix</groupId>
+        <artifactId>hystrix-javanica</artifactId>
+        <version>${version.hystrix}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.netflix.hystrix</groupId>
+        <artifactId>hystrix-metrics-event-stream</artifactId>
+        <version>${version.hystrix}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+</project>
