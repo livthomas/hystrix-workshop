@@ -19,7 +19,6 @@ import java.time.Duration;
 import java.time.Instant;
 
 import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
-import net.livthomas.hystrix.client.RestClient;
 import net.livthomas.hystrix.client.WebServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,8 +30,7 @@ public class TimeoutClient {
     private static final Logger log = LoggerFactory.getLogger(TimeoutClient.class);
 
     private static String callTimeoutService() throws Exception {
-        // TODO use Hystrix command here
-        return RestClient.callService(SERVICE_PATH);
+        return new TimeoutServiceCommand(SERVICE_PATH).execute();
     }
 
     public static void main(String[] args) {
