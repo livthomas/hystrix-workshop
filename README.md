@@ -33,6 +33,7 @@ Follow these steps before you start working on the assignments:
 The course consists of the following assignments:
 
 1. [Basic Command Execution](https://github.com/livthomas/hystrix-workshop/tree/master/01-command)
+2. [Timeouts](https://github.com/livthomas/hystrix-workshop/tree/master/02-timeout)
 
 Each assignment usually covers a single Hystrix feature.
 It is recommended to complete these tasks in the given order.

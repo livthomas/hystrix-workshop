@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>hystrix-workshop</artifactId>
+    <groupId>net.livthomas.hystrix</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>unstable-server</artifactId>
+  <packaging>war</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.netflix.hystrix</groupId>
+      <artifactId>hystrix-dashboard</artifactId>
+      <type>war</type>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.spec.javax.ws.rs</groupId>
+      <artifactId>jboss-jaxrs-api_2.0_spec</artifactId>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.cargo</groupId>
+        <artifactId>cargo-maven2-plugin</artifactId>
+        <configuration>
+          <container>
+            <containerId>wildfly10x</containerId>
+          </container>
+          <deployables>
+            <deployable>
+              <groupId>${project.groupId}</groupId>
+              <artifactId>${project.artifactId}</artifactId>
+              <type>war</type>
+            </deployable>
+            <deployable>
+              <groupId>com.netflix.hystrix</groupId>
+              <artifactId>hystrix-dashboard</artifactId>
+              <type>war</type>
+            </deployable>
+          </deployables>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
