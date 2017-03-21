@@ -9,6 +9,9 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>01-command</module>
+    <module>02-timeout</module>
+    <module>unstable-server</module>
+    <module>hystrix-client</module>
   </modules>
 
   <packaging>pom</packaging>
@@ -19,8 +22,13 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+    <version.cargo>1.6.2</version.cargo>
     <version.hystrix>1.5.10</version.hystrix>
+    <version.jboss.javaee7>1.1.0.Final</version.jboss.javaee7>
     <version.logback>1.2.1</version.logback>
+    <version.resteasy>3.1.1.Final</version.resteasy>
+    <version.undertow>1.4.11.Final</version.undertow>
+    <version.war.plugin>3.0.0</version.war.plugin>
   </properties>
 
   <dependencyManagement>
@@ -39,6 +47,7 @@
         <groupId>com.netflix.hystrix</groupId>
         <artifactId>hystrix-dashboard</artifactId>
         <version>${version.hystrix}</version>
+        <type>war</type>
       </dependency>
       <dependency>
         <groupId>com.netflix.hystrix</groupId>
@@ -50,7 +59,53 @@
         <artifactId>hystrix-metrics-event-stream</artifactId>
         <version>${version.hystrix}</version>
       </dependency>
+      <dependency>
+        <groupId>io.undertow</groupId>
+        <artifactId>undertow-core</artifactId>
+        <version>${version.undertow}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.undertow</groupId>
+        <artifactId>undertow-servlet</artifactId>
+        <version>${version.undertow}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.resteasy</groupId>
+        <artifactId>resteasy-client</artifactId>
+        <version>${version.resteasy}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.resteasy</groupId>
+        <artifactId>resteasy-undertow</artifactId>
+        <version>${version.resteasy}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.spec</groupId>
+        <artifactId>jboss-javaee-7.0</artifactId>
+        <version>${version.jboss.javaee7}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.cargo</groupId>
+          <artifactId>cargo-maven2-plugin</artifactId>
+          <version>${version.cargo}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>${version.war.plugin}</version>
+          <configuration>
+            <failOnMissingWebXml>false</failOnMissingWebXml>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
 </project>
