@@ -18,6 +18,7 @@ package net.livthomas.hystrix.server;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -25,12 +26,12 @@ import javax.ws.rs.core.Response;
 public class FailingService {
 
     private static final double FAILURE_RATE = 0.5;
-    private static final long DELAY = 100; // milliseconds
+    private static final long DEFAULT_DELAY = 100; // milliseconds
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public Response fail() throws Exception {
-        Thread.sleep(DELAY);
+    public Response fail(@QueryParam("delay") Long delay) throws Exception {
+        Thread.sleep(delay != null ? delay : DEFAULT_DELAY);
 
         boolean fail = Math.round(Math.random()) < FAILURE_RATE;
         if (fail) {
