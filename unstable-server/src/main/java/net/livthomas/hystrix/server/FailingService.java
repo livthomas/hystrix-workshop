@@ -13,19 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.livthomas.hystrix.client;
+package net.livthomas.hystrix.server;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
-public class RestClient {
+@Path("fail")
+public class FailingService {
 
-    private static final String SERVER_URL = "http://localhost:8080/unstable-server";
+    private static final double FAILURE_RATE = 0.5;
 
-    public static String callService(String servicePath) throws Exception {
-        Client client = ClientBuilder.newBuilder().build();
-        WebTarget target = client.target(SERVER_URL).path(servicePath);
-        return target.request().get(String.class);
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response fail() throws Exception {
+        boolean fail = Math.round(Math.random()) < FAILURE_RATE;
+        if (fail) {
+            return Response.serverError().build();
+        }
+
+        return Response.ok("Congratulations! You are lucky.").build();
     }
 }
