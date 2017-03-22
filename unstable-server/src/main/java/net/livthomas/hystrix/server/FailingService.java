@@ -25,15 +25,18 @@ import javax.ws.rs.core.Response;
 public class FailingService {
 
     private static final double FAILURE_RATE = 0.5;
+    private static final long DELAY = 100; // milliseconds
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public Response fail() throws Exception {
+        Thread.sleep(DELAY);
+
         boolean fail = Math.round(Math.random()) < FAILURE_RATE;
         if (fail) {
             return Response.serverError().build();
         }
 
-        return Response.ok("Congratulations! You are lucky.").build();
+        return Response.ok("success").build();
     }
 }
