@@ -19,9 +19,6 @@ import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import net.livthomas.hystrix.client.RestClient;
 
-/**
- * TODO add fallback
- */
 public class FailingServiceCommand extends HystrixCommand<String> {
 
     private static final String SERVICE_PATH = "fail";
@@ -33,5 +30,10 @@ public class FailingServiceCommand extends HystrixCommand<String> {
     @Override
     protected String run() throws Exception {
         return RestClient.callService(SERVICE_PATH);
+    }
+
+    @Override
+    protected String getFallback() {
+        return "fallback executed";
     }
 }
