@@ -12,6 +12,7 @@
     <module>02-timeout</module>
     <module>unstable-server</module>
     <module>hystrix-client</module>
+    <module>03-circuit-breaker</module>
   </modules>
 
   <packaging>pom</packaging>

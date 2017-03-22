@@ -34,6 +34,7 @@ The course consists of the following assignments:
 
 1. [Basic Command Execution](https://github.com/livthomas/hystrix-workshop/tree/master/01-command)
 2. [Timeouts](https://github.com/livthomas/hystrix-workshop/tree/master/02-timeout)
+2. [Circuit Breaker](https://github.com/livthomas/hystrix-workshop/tree/master/03-circuit-breaker)
 
 Each assignment usually covers a single Hystrix feature.
 It is recommended to complete these tasks in the given order.
