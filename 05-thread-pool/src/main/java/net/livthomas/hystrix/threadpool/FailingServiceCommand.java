@@ -18,6 +18,8 @@ package net.livthomas.hystrix.threadpool;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixCommandKey;
+import com.netflix.hystrix.HystrixThreadPoolKey;
+import com.netflix.hystrix.HystrixThreadPoolProperties;
 import net.livthomas.hystrix.client.RestClient;
 
 public class FailingServiceCommand extends HystrixCommand<String> {
@@ -26,7 +28,9 @@ public class FailingServiceCommand extends HystrixCommand<String> {
 
     public FailingServiceCommand(String groupKey, String commandKey) {
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey(groupKey))
-                .andCommandKey(HystrixCommandKey.Factory.asKey(commandKey)));
+                .andCommandKey(HystrixCommandKey.Factory.asKey(commandKey))
+                .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("mySingleThreadPool"))
+                .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter().withCoreSize(2)));
     }
 
     @Override
