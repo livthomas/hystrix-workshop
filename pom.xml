@@ -15,6 +15,7 @@
     <module>03-circuit-breaker</module>
     <module>04-fallback</module>
     <module>05-thread-pool</module>
+    <module>06-request-cache</module>
   </modules>
 
   <packaging>pom</packaging>
