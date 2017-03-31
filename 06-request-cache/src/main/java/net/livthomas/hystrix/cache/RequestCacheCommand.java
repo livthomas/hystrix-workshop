@@ -18,9 +18,8 @@ package net.livthomas.hystrix.cache;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 
-/**
- * TODO turn on caching
- */
+import java.time.LocalDateTime;
+
 public class RequestCacheCommand extends HystrixCommand<String> {
 
     private final String message;
@@ -34,5 +33,10 @@ public class RequestCacheCommand extends HystrixCommand<String> {
     @Override
     protected String run() throws Exception {
         return EchoService.echo(message);
+    }
+
+    @Override
+    protected String getCacheKey() {
+        return message + LocalDateTime.now().getSecond();
     }
 }
