@@ -37,6 +37,7 @@ The course consists of the following assignments:
 1. [Circuit Breaker](https://github.com/livthomas/hystrix-workshop/tree/master/03-circuit-breaker)
 1. [Fallback](https://github.com/livthomas/hystrix-workshop/tree/master/04-fallback)
 1. [Thread Pool Management](https://github.com/livthomas/hystrix-workshop/tree/master/05-thread-pool)
+1. [Request Cache](https://github.com/livthomas/hystrix-workshop/tree/master/06-request-cache)
 
 Each assignment usually covers a single Hystrix feature.
 It is recommended to complete these tasks in the given order.
