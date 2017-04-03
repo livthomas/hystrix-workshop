@@ -27,6 +27,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <version.cargo>1.6.2</version.cargo>
+    <version.exec.plugin>1.6.0</version.exec.plugin>
     <version.hystrix>1.5.10</version.hystrix>
     <version.jboss.javaee7>1.1.0.Final</version.jboss.javaee7>
     <version.logback>1.2.1</version.logback>
@@ -107,6 +108,11 @@
           <configuration>
             <failOnMissingWebXml>false</failOnMissingWebXml>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>${version.exec.plugin}</version>
         </plugin>
       </plugins>
     </pluginManagement>
